@@ -7,6 +7,14 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 
+public static int NO_OF_VIDEO;
+public static int NO_OF_ENDPOINT;
+public static int NO_OF_SERVER;
+public static int SERVER_CAPACITY;
+public static Video[] videos;
+
+
+
 public class hash2017 {
     public static void main(String[] args){
         System.out.println("Hello Hashcode");
@@ -23,11 +31,17 @@ public class hash2017 {
         // Get four arguments (int)
 
         int[] Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	NO_OF_VIDEO = Arguments[0];
+	NO_OF_ENDPOINT = Arguments[1];
+	NO_OF_SERVER = Arguments[2];
+	SERVER_CAPACITY = Arguments[4];
+	videos = new Video[NO_OF_VIDEO];
 
-        System.out.println("Arguments is here:  " + line1);
-        for (int i = 0; i < Arguments.length ;i++ ) {
-          System.out.println(i +": "+Arguments[i]);
-        }
+	String Line1 = br.readLine();
+
+	
+
+	
         while((line = br.readLine()) != null){
           System.out.println("undecided");
           }
@@ -38,5 +52,5 @@ public class hash2017 {
         e.printStackTrace();
         }
 
-        }
+       }
 }
