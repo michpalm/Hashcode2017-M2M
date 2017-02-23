@@ -38,6 +38,10 @@ public class hash2017 {
 	videos = new Video[NO_OF_VIDEO];
 
 	String Line1 = br.readLine();
+	Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	for(int i = 0; i<NO_OF_VIDEO ; i++){
+	    videos[i] = new Video(i,Arguments[i]);
+	}
 
 	
 
