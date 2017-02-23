@@ -89,7 +89,7 @@ public class hash2017 {
     }
 
 
-    public static class Endfile{
+    public static class Endpoint{
 
 	public int distance_to_datacenter;
 	public HashMap<Integer,Integer> cache_point;
