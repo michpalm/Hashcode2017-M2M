@@ -1,9 +1,13 @@
 import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class hash2017 {
     public static void main(String[] args){
         System.out.println("Hello Hashcode");
-        String file_path = "input/me_at_the_zoo.in"
+        String file_path = "input/me_at_the_zoo.in";
 
         stream_input(file_path);
     }
