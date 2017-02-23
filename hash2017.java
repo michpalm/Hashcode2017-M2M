@@ -18,7 +18,6 @@ public class hash2017 {
     public static void stream_input(String file_path){
       try{
         BufferedReader br = new BufferedReader(new FileReader(file_path));
-        String line;
         String line1 = br.readLine(); //reading the first line
 
         // Get four arguments (int)
