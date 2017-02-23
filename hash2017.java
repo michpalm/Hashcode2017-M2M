@@ -58,7 +58,7 @@ public class hash2017 {
 		    for(int j = 0; j< Arguments[i] ; j++){
 			line = br.readLine();
 			int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-			Endpoint[i].add(info[0],info[1]);
+			endpoint[i].add(info[0],info[1]);
 		    }
 
 		}
@@ -107,7 +107,7 @@ public class hash2017 {
 	}
 
 	public void add_request(int video_num, int request){
-	    requests.put(video_num, request);
+	    request.put(video_num, request);
 	}
     }
 }
