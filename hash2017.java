@@ -7,16 +7,14 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 
-public static int NO_OF_VIDEO;
-public static int NO_OF_ENDPOINT;
-public static int NO_OF_SERVER;
-public static int SERVER_CAPACITY;
-public static Video[] videos;
-public static Endpoint[] endpoints;
-
-
-
 public class hash2017 {
+    public static int NO_OF_VIDEO;
+    public static int NO_OF_ENDPOINT;
+    public static int NO_OF_SERVER;
+    public static int SERVER_CAPACITY;
+    public static Video[] videos;
+    public static Endpoint[] endpoints;
+
     public static void main(String[] args){
         System.out.println("Hello Hashcode");
         String file_path = "input/me_at_the_zoo.in";
@@ -24,49 +22,45 @@ public class hash2017 {
         stream_input(file_path);
     }
 
+
+
     public static void stream_input(String file_path){
-	try{
-	    BufferedReader br = new BufferedReader(new FileReader(file_path));
-	    String line1 = br.readLine(); //reading the first line
+      try{
+        BufferedReader br = new BufferedReader(new FileReader(file_path));
+        String firstLine = br.readLine(); //reading the first line
 
-	    // Get four arguments (int)
+        // Get four arguments (int)
 
-	    int[] Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	    NO_OF_VIDEO = Arguments[0];
-	    NO_OF_ENDPOINT = Arguments[1];
-	    NO_OF_SERVER = Arguments[2];
-	    SERVER_CAPACITY = Arguments[4];
-	    videos = new Video[NO_OF_VIDEO];
+        int[] Arguments = Arrays.asList(firstLine.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+        NO_OF_VIDEO = Arguments[0];
+        NO_OF_ENDPOINT = Arguments[1];
+        NO_OF_SERVER = Arguments[2];
+        SERVER_CAPACITY = Arguments[4];
+        videos = new Video[NO_OF_VIDEO];
 
-	    String Line1 = br.readLine();
-	    Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	    for(int i = 0; i<NO_OF_VIDEO ; i++){
-		videos[i] = new Video(i,Arguments[i]);
+
+	String rest = br.readLine();
+	Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	for(int i = 0; i<NO_OF_VIDEO ; i++){
+	    videos[i] = new Video(i,Arguments[i]);
+	}
+	endpoints = new Endpoint[NO_OF_ENDPOINT];
+	for(int i = 0; i<NO_OF_ENDPOINT; i++){
+	    String line = br.readLine();
+	    Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	    endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
+	    for(int j = 0; j< Arguments[i] ; j++){
+		line = br.readLine();
+		int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		Endpoint[i].add(info[0],info[1]);
 	    }
-
-	    endpoints = new Endpoint[NO_OF_ENDPOINT];
-	    for(int i = 0; i<NO_OF_ENDPOINT; i++){
-		String line = br.readLine();
-		Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
-		for(int j = 0; j< Arguments[i] ; j++){
-		    line = br.readLine();
-		    int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		    Endpoint[i].add(info[0],info[1]);
-		}
 		    
-	    }
-		
-
-	    
+	}
 	
-
-	
-
-	
-	    while((line = br.readLine()) != null){
-		System.out.println("undecided");
-	    }
+      //do operations to everyline after line 1 here
+        while((rest = br.readLine()) != null){
+          System.out.println("undecided");
+        }
 
         } catch (FileNotFoundException e) {
 	    e.printStackTrace();
