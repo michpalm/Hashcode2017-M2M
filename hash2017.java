@@ -61,9 +61,9 @@ public class hash2017 {
 		    }
 
 		}
-	
 
-	
+
+
 		while((rest = br.readLine()) !=null){
 		    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 		    videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
@@ -73,9 +73,9 @@ public class hash2017 {
 
 		//Handle Dead request
 		//for loop
-		for (int i = 0;i<videos.length ;i++ ) {
-		    if (videos[i].request.isEmpty()){
-			videos[i] = null;
+		for (int a = 0;a<videos.length ;a++ ) {
+		    if (videos[a].request.isEmpty()){
+			videos[a] = null;
 		    }
 		}
 	    }
@@ -110,4 +110,3 @@ public class hash2017 {
 	}
     }
 }
-
