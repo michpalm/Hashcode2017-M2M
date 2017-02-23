@@ -42,43 +42,44 @@ public class hash2017 {
 	    String rest = br.readLine();
 	    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 	    for(int i = 0; i<NO_OF_VIDEO ; i++){
-		if (Arugments[i] > SERVER_CAPACITY) {
+		if (Arguments[i] > SERVER_CAPACITY) {
 		    //to filter out big videos
-		    video[i] = null;
+		    videos[i] = null;
 		}else{
 		    videos[i] = new Video(i,Arguments[i]);
 
 		}
-		endpoints = new Endpoint[NO_OF_ENDPOINT];
-		for(int i = 0; i<NO_OF_ENDPOINT; i++){
-		    String line = br.readLine();
-		    Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		    endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
-		    for(int j = 0; j< Arguments[i] ; j++){
-			line = br.readLine();
-			int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-			Endpoint[i].add(info[0],info[1]);
-		    }
-
+	    }
+	    endpoints = new Endpoint[NO_OF_ENDPOINT];
+	    for(int i = 0; i<NO_OF_ENDPOINT; i++){
+		String line = br.readLine();
+		Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
+		for(int j = 0; j< Arguments[i] ; j++){
+		    line = br.readLine();
+		    int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		    endpoints[i].add(info[0],info[1]);
 		}
+
+	    }
 	
 
 	
-		while((rest = br.readLine()) !=null){
-		    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		    videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
-		    endpoints[Arguments[1]].add_request(Arguments[0],Arguments[2]);
-		}
+	    while((rest = br.readLine()) !=null){
+		Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
+		endpoints[Arguments[1]].add_request(Arguments[0],Arguments[2]);
+	    }
 
 
-		//Handle Dead request
-		//for loop
-		for (int i = 0;i<videos.length ;i++ ) {
-		    if (videos[i].request.isEmpty()){
-			videos[i] = null;
-		    }
+	    //Handle Dead request
+	    //for loop
+	    for (int i = 0;i<videos.length ;i++ ) {
+		if (videos[i].requests.isEmpty()){
+		    videos[i] = null;
 		}
 	    }
+	    
 
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
@@ -102,7 +103,7 @@ public class hash2017 {
 	}
 
 	public void add(int cache, int latency){
-	    cache_point = put(cache, distance_to_datacenter-latency);
+	    cache_point.put(cache, distance_to_datacenter-latency);
 	}
 
 	public void add_request(int video_num, int request){
