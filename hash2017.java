@@ -57,6 +57,12 @@ public class hash2017 {
 		    
 	}
 	
+	while((rest = br.readLine()) !=null){
+	    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	    videos[Arguments[0]].add(Arguments[1],Arguments[2]);
+	    endpoints[Arguments[1]].add(Arguments[0],Arguments[2]);
+	}
+	
       //do operations to everyline after line 1 here
         while((rest = br.readLine()) != null){
           System.out.println("undecided");
@@ -72,15 +78,22 @@ public class hash2017 {
 
     public static class Endfile{
 
-	int distance_to_datacenter;
-	HashMap<Integer,Integer> cache_point;
+	public int distance_to_datacenter;
+	public HashMap<Integer,Integer> cache_point;
+	public HashMap<Integer,Integer> requests;
 
 	public Endfile(int distance,int no_of_cache){
 	    distance_to_datacenter = distance;
 	    cache_point = new HashMap(no_of_cache);
+	    requests = new HashMap();
 	}
 
 	public void add(int cache, int latency){
 	    cache_point = put(cache, distance_to_datacenter-latency);
 	}
+
+	public void add_request(int video_num, int request){
+	    requests.put(video_num, request);
+	}
+    }
 }

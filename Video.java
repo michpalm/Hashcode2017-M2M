@@ -10,4 +10,8 @@ public class Video {
     this.size = size;
 
   }
+
+    public void add_request(int endpoint, int request){
+	request.put(endpoint, request);
+    }
 }
