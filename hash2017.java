@@ -103,7 +103,7 @@ public class hash2017 {
 
 	public void add(int cache, int latency){
 	    cache_point = put(cache, distance_to_datacenter-latency);
-lys	}
+	}
 
 	public void add_request(int video_num, int request){
 	    requests.put(video_num, request);
