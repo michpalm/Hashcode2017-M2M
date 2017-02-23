@@ -95,7 +95,7 @@ public class hash2017 {
 	public HashMap<Integer,Integer> cache_point;
 	public HashMap<Integer,Integer> requests;
 
-	public Endpoint(int distance,int no_of_cache){
+	public Endpointy(int distance,int no_of_cache){
 	    distance_to_datacenter = distance;
 	    cache_point = new HashMap(no_of_cache);
 	    requests = new HashMap();
