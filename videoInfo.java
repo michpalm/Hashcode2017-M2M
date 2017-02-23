@@ -5,7 +5,7 @@ public class videoInfo {
   int size;
   HashMap<Integer,Integer> request = new HashMap<>();
 
-  public void videoInfo(int num, int size, HashMap<Interger,Interger> request) {
+  public void videoInfo(int num, int size, HashMap<Integer,Integer> request) {
     this.num = num;
     this.size = size;
     this.request = request;
