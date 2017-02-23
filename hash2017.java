@@ -58,7 +58,7 @@ public class hash2017 {
 		    for(int j = 0; j< Arguments[i] ; j++){
 			line = br.readLine();
 			int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-			endpoint[i].add(info[0],info[1]);
+			endpoints[i].add(info[0],info[1]);
 		    }
 
 		}
