@@ -87,6 +87,7 @@ public class hash2017 {
 	    }
 
 	}
+    }
 
 	public static class Endfile{
 
@@ -109,3 +110,4 @@ public class hash2017 {
 	    }
 	}
     }
+
