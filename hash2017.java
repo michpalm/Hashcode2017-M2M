@@ -71,6 +71,15 @@ public class hash2017 {
 	}
 
 
+        //Handle Dead request
+        //for loop
+        for (int i = 0;i<videos.length ;i++ ) {
+          if (videos[i].request.isEmpty()){
+            videos[i] = null;
+          }
+        }
+
+
         } catch (FileNotFoundException e) {
 	    e.printStackTrace();
         } catch (IOException e) {
