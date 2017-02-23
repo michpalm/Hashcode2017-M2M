@@ -78,36 +78,36 @@ public class hash2017 {
 			videos[i] = null;
 		    }
 		}
-
-
-	    } catch (FileNotFoundException e) {
-		e.printStackTrace();
-	    } catch (IOException e) {
-		e.printStackTrace();
 	    }
 
+	} catch (FileNotFoundException e) {
+	    e.printStackTrace();
+	} catch (IOException e) {
+	    e.printStackTrace();
 	}
+
     }
 
-	public static class Endfile{
 
-	    public int distance_to_datacenter;
-	    public HashMap<Integer,Integer> cache_point;
-	    public HashMap<Integer,Integer> requests;
+    public static class Endfile{
 
-	    public Endfile(int distance,int no_of_cache){
-		distance_to_datacenter = distance;
-		cache_point = new HashMap(no_of_cache);
-		requests = new HashMap();
-	    }
+	public int distance_to_datacenter;
+	public HashMap<Integer,Integer> cache_point;
+	public HashMap<Integer,Integer> requests;
 
-	    public void add(int cache, int latency){
-		cache_point = put(cache, distance_to_datacenter-latency);
-	    }
+	public Endfile(int distance,int no_of_cache){
+	    distance_to_datacenter = distance;
+	    cache_point = new HashMap(no_of_cache);
+	    requests = new HashMap();
+	}
 
-	    public void add_request(int video_num, int request){
-		requests.put(video_num, request);
-	    }
+	public void add(int cache, int latency){
+	    cache_point = put(cache, distance_to_datacenter-latency);
+lys	}
+
+	public void add_request(int video_num, int request){
+	    requests.put(video_num, request);
 	}
     }
+}
 
