@@ -49,37 +49,39 @@ public class hash2017 {
 		}else{
 		    videos[k] = new Video(k,Arguments[k]);
 
-		}}
+		}
+	    }
 		
-		endpoints = new Endpoint[NO_OF_ENDPOINT];
-		for(int i = 0; i<NO_OF_ENDPOINT; i++){
-		    String line = br.readLine();
-		    Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		    endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
-		    for(int j = 0; j< Arguments[i] ; j++){
-			line = br.readLine();
-			int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-			endpoints[i].add(info[0],info[1]);
-		    }
+	    endpoints = new Endpoint[NO_OF_ENDPOINT];
+	    for(int i = 0; i<NO_OF_ENDPOINT; i++){
+		String line = br.readLine();
+		Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
+		for(int j = 0; j< Arguments[1] ; j++){
+		    line = br.readLine();
 
+		    int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		    endpoints[i].add(info[0],info[1]);
 		}
 
+	    }
 
 
-		while((rest = br.readLine()) !=null){
-		    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		    videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
-		    endpoints[Arguments[1]].add_request(Arguments[0],Arguments[2]);
+
+	    while((rest = br.readLine()) !=null){
+		Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
+		endpoints[Arguments[1]].add_request(Arguments[0],Arguments[2]);
+	    }
+
+
+	    //Handle Dead request
+	    //for loop
+	    for (int a = 0;a<videos.length ;a++ ) {
+		if (videos[a].requests.isEmpty()){
+		    videos[a] = null;
 		}
-
-
-		//Handle Dead request
-		//for loop
-		for (int a = 0;a<videos.length ;a++ ) {
-		    if (videos[a].requests.isEmpty()){
-			videos[a] = null;
-		    }
-		}
+	    }
 	
 
 	} catch (FileNotFoundException e) {
