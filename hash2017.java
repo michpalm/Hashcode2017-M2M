@@ -76,7 +76,7 @@ public class hash2017 {
 		//Handle Dead request
 		//for loop
 		for (int a = 0;a<videos.length ;a++ ) {
-		    if (videos[a].request.isEmpty()){
+		    if (videos[a].requests.isEmpty()){
 			videos[a] = null;
 		    }
 		}
@@ -108,7 +108,7 @@ public class hash2017 {
 	}
 
 	public void add_request(int video_num, int request){
-	    request.put(video_num, request);
+	    requests.put(video_num, request);
 	}
     }
 }

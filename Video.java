@@ -12,10 +12,6 @@ public class Video {
     }
 
     public void add_request(int endpoint, int request){
-<<<<<<< HEAD
 	requests.put(endpoint, request);
-=======
-	    request.put(endpoint, request);
->>>>>>> 1bd26d083e1114d655a4ea8428c39ff0350a337a
     }
 }
