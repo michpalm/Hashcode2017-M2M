@@ -25,87 +25,87 @@ public class hash2017 {
 
 
     public static void stream_input(String file_path){
-      try{
-        BufferedReader br = new BufferedReader(new FileReader(file_path));
-        String firstLine = br.readLine(); //reading the first line
+	try{
+	    BufferedReader br = new BufferedReader(new FileReader(file_path));
+	    String firstLine = br.readLine(); //reading the first line
 
-        // Get four arguments (int)
+	    // Get four arguments (int)
 
-        int[] Arguments = Arrays.asList(firstLine.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-        NO_OF_VIDEO = Arguments[0];
-        NO_OF_ENDPOINT = Arguments[1];
-        NO_OF_SERVER = Arguments[2];
-        SERVER_CAPACITY = Arguments[4];
-        videos = new Video[NO_OF_VIDEO];
+	    int[] Arguments = Arrays.asList(firstLine.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	    NO_OF_VIDEO = Arguments[0];
+	    NO_OF_ENDPOINT = Arguments[1];
+	    NO_OF_SERVER = Arguments[2];
+	    SERVER_CAPACITY = Arguments[4];
+	    videos = new Video[NO_OF_VIDEO];
 
 
-	String rest = br.readLine();
-	Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	for(int i = 0; i<NO_OF_VIDEO ; i++){
-    if (Arugments[i] > SERVER_CAPACITY) {
-      //to filter out big videos
-      video[i] = null;
-    }else{
-	    videos[i] = new Video(i,Arguments[i]);
+	    String rest = br.readLine();
+	    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+	    for(int i = 0; i<NO_OF_VIDEO ; i++){
+		if (Arugments[i] > SERVER_CAPACITY) {
+		    //to filter out big videos
+		    video[i] = null;
+		}else{
+		    videos[i] = new Video(i,Arguments[i]);
 
-	}
-	endpoints = new Endpoint[NO_OF_ENDPOINT];
-	for(int i = 0; i<NO_OF_ENDPOINT; i++){
-	    String line = br.readLine();
-	    Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	    endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
-	    for(int j = 0; j< Arguments[i] ; j++){
-		line = br.readLine();
-		int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-		Endpoint[i].add(info[0],info[1]);
+		}
+		endpoints = new Endpoint[NO_OF_ENDPOINT];
+		for(int i = 0; i<NO_OF_ENDPOINT; i++){
+		    String line = br.readLine();
+		    Arguments = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		    endpoints[i] = new Endpoint(Arguments[0], Arguments[1]);
+		    for(int j = 0; j< Arguments[i] ; j++){
+			line = br.readLine();
+			int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+			Endpoint[i].add(info[0],info[1]);
+		    }
+
+		}
+	
+
+	
+		while((rest = br.readLine()) !=null){
+		    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+		    videos[Arguments[0]].add_request(Arguments[1],Arguments[2]);
+		    endpoints[Arguments[1]].add_request(Arguments[0],Arguments[2]);
+		}
+
+
+		//Handle Dead request
+		//for loop
+		for (int i = 0;i<videos.length ;i++ ) {
+		    if (videos[i].request.isEmpty()){
+			videos[i] = null;
+		    }
+		}
+
+
+	    } catch (FileNotFoundException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
 	    }
 
 	}
-	
 
-	
-	while((rest = br.readLine()) !=null){
-	    Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	    videos[Arguments[0]].add(Arguments[1],Arguments[2]);
-	    endpoints[Arguments[1]].add(Arguments[0],Arguments[2]);
-	}
+	public static class Endfile{
 
+	    public int distance_to_datacenter;
+	    public HashMap<Integer,Integer> cache_point;
+	    public HashMap<Integer,Integer> requests;
 
-        //Handle Dead request
-        //for loop
-        for (int i = 0;i<videos.length ;i++ ) {
-          if (videos[i].request.isEmpty()){
-            videos[i] = null;
-          }
-        }
+	    public Endfile(int distance,int no_of_cache){
+		distance_to_datacenter = distance;
+		cache_point = new HashMap(no_of_cache);
+		requests = new HashMap();
+	    }
 
+	    public void add(int cache, int latency){
+		cache_point = put(cache, distance_to_datacenter-latency);
+	    }
 
-        } catch (FileNotFoundException e) {
-	    e.printStackTrace();
-        } catch (IOException e) {
-	    e.printStackTrace();
-        }
-
-    }
-
-    public static class Endfile{
-
-	public int distance_to_datacenter;
-	public HashMap<Integer,Integer> cache_point;
-	public HashMap<Integer,Integer> requests;
-
-	public Endfile(int distance,int no_of_cache){
-	    distance_to_datacenter = distance;
-	    cache_point = new HashMap(no_of_cache);
-	    requests = new HashMap();
-	}
-
-	public void add(int cache, int latency){
-	    cache_point = put(cache, distance_to_datacenter-latency);
-	}
-
-	public void add_request(int video_num, int request){
-	    requests.put(video_num, request);
+	    public void add_request(int video_num, int request){
+		requests.put(video_num, request);
+	    }
 	}
     }
-}
