@@ -41,9 +41,3 @@ public class hash2017 {
 
         }
 }
-
- class videoInfo {
-  int videoName;
-  int size;
-  HashMap<Integer,Integer> request = new HashMap<>();
-}
