@@ -44,11 +44,12 @@ public class hash2017 {
 	    for(int k = 0; k<NO_OF_VIDEO ; k++){
 		if (Arguments[k] > SERVER_CAPACITY) {
 		    //to filter out big videos
-		    video[k] = null;
+		    videos[k] = null;
 		}else{
 		    videos[k] = new Video(k,Arguments[k]);
 
-		}
+		}}
+		
 		endpoints = new Endpoint[NO_OF_ENDPOINT];
 		for(int i = 0; i<NO_OF_ENDPOINT; i++){
 		    String line = br.readLine();
@@ -78,7 +79,7 @@ public class hash2017 {
 			videos[a] = null;
 		    }
 		}
-	    }
+	
 
 	} catch (FileNotFoundException e) {
 	    e.printStackTrace();
@@ -102,7 +103,7 @@ public class hash2017 {
 	}
 
 	public void add(int cache, int latency){
-	    cache_point = put(cache, distance_to_datacenter-latency);
+	    cache_point.put(cache, distance_to_datacenter-latency);
 	}
 
 	public void add_request(int video_num, int request){
