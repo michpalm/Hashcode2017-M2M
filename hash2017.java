@@ -3,6 +3,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.ArrayList;
+
 
 public class hash2017 {
     public static void main(String[] args){
@@ -19,9 +22,13 @@ public class hash2017 {
         String line1 = br.readLine(); //reading the first line
 
         // Get four arguments (int)
-        public int[] Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 
-        System.out.println("Arguments is here:  " + Arguments);
+        int[] Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
+
+        System.out.println("Arguments is here:  " + line1);
+        for (int i = 0; i < Arguments.length ;i++ ) {
+          System.out.println(i +": "+Arguments[i]);
+        }
         while((line = br.readLine()) != null){
           System.out.println("undecided");
           }
@@ -35,7 +42,7 @@ public class hash2017 {
         }
 }
 
-public class videoInfo {
+ class videoInfo {
   int videoName;
   int size;
   HashMap<Integer,Integer> request = new HashMap<>();
