@@ -31,13 +31,13 @@ public class hash2017 {
         // Get four arguments (int)
 
         int[] Arguments = Arrays.asList(line1.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
-	NO_OF_VIDEO = Arguments[0];
-	NO_OF_ENDPOINT = Arguments[1];
-	NO_OF_SERVER = Arguments[2];
-	SERVER_CAPACITY = Arguments[4];
-	videos = new Video[NO_OF_VIDEO];
+        NO_OF_VIDEO = Arguments[0];
+        NO_OF_ENDPOINT = Arguments[1];
+        NO_OF_SERVER = Arguments[2];
+        SERVER_CAPACITY = Arguments[4];
+        videos = new Video[NO_OF_VIDEO];
 
-	String Line1 = br.readLine();
+        String Line1 = br.readLine();
 
 	
 
