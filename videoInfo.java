@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class videoInfo {
+public class Video {
   int num;
   int size;
   HashMap<Integer,Integer> request = new HashMap<>();
@@ -10,6 +10,4 @@ public class videoInfo {
     this.size = size;
     this.request = request;
   }
-
-
 }
