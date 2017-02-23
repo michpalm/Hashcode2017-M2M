@@ -42,7 +42,12 @@ public class hash2017 {
 	String rest = br.readLine();
 	Arguments = Arrays.asList(rest.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 	for(int i = 0; i<NO_OF_VIDEO ; i++){
+    if (Arugments[i] > SERVER_CAPACITY) {
+      //to filter out big videos
+      video[i] = null;
+    }else{
 	    videos[i] = new Video(i,Arguments[i]);
+
 	}
 	endpoints = new Endpoint[NO_OF_ENDPOINT];
 	for(int i = 0; i<NO_OF_ENDPOINT; i++){
@@ -54,9 +59,10 @@ public class hash2017 {
 		int[] info = Arrays.asList(line.split(" ")).stream().mapToInt(Integer::parseInt).toArray();
 		Endpoint[i].add(info[0],info[1]);
 	    }
-		    
+
 	}
-	
+
+
       //do operations to everyline after line 1 here
         while((rest = br.readLine()) != null){
           System.out.println("undecided");
